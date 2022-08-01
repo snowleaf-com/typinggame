@@ -103,11 +103,10 @@
                 };
             },
             numberToDifficulty: function () {
-                const path = this.$route.path;
                 return function (str) {
                     for(let i = 0; i < this.drills.length; i++) {
                         if(str == this.drills[i].difficulty) {
-                            return `${path}/img/star${str}.gif`;
+                            return `/img/star${str}.gif`;
                         }
                     }
                 };
