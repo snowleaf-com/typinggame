@@ -43,7 +43,7 @@
                                         <p class="card-text d-flex justify-content-end">
                                             作成者: {{ list.user.name }}
                                         </p>
-                                        <a :href="`${this.$route.path}/drills/show/${list.id}`" class="btn btn-primary float-right">ゲーム開始</a>
+                                        <a :href="`/drills/show/${list.id}`" class="btn btn-primary float-right">ゲーム開始</a>
                                     </div>
                                 </div>
                             </div>
@@ -103,10 +103,11 @@
                 };
             },
             numberToDifficulty: function () {
+                const path = this.$route.path;
                 return function (str) {
                     for(let i = 0; i < this.drills.length; i++) {
                         if(str == this.drills[i].difficulty) {
-                            return `/img/star${str}.gif`;
+                            return `${path}/img/star${str}.gif`;
                         }
                     }
                 };
