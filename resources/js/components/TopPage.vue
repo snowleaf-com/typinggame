@@ -43,7 +43,7 @@
                                         <p class="card-text d-flex justify-content-end">
                                             作成者: {{ list.user.name }}
                                         </p>
-                                        <a :href="`/drills/show/${list.id}`" class="btn btn-primary float-right">ゲーム開始</a>
+                                        <a :href="`https://snow-leaf.com/typinggame/drills/show/${list.id}`" class="btn btn-primary float-right">ゲーム開始</a>
                                     </div>
                                 </div>
                             </div>
