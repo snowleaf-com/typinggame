@@ -105,7 +105,6 @@
             },
             numberToDifficulty: function () {
                 return function (str) {
-                    this.envUri = process.env.MIX_APP_URL;
                     for(let i = 0; i < this.drills.length; i++) {
                         if(str == this.drills[i].difficulty) {
                             return `${envUri}/img/star${str}.gif`;
@@ -113,7 +112,9 @@
                     }
                 };
             },
-
+        },
+        created() {
+            this.envUri = process.env.MIX_APP_URL;
         },
         methods: {
             ressetting: function () {
