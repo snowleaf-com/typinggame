@@ -74,7 +74,7 @@
                 load: true,
                 page: 1,
                 drills: [],
-                envUri: 'aaa',
+                envUri: '',
             }
         },
         computed: {
@@ -107,7 +107,7 @@
                 return function (str) {
                     for(let i = 0; i < this.drills.length; i++) {
                         if(str == this.drills[i].difficulty) {
-                            return `${this.envUri}/img/star${str}.gif`;
+                            return `${envUri}/img/star${str}.gif`;
                         }
                     }
                 };
