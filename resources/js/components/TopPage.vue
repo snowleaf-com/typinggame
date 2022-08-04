@@ -107,7 +107,7 @@
                 return function (str) {
                     for(let i = 0; i < this.drills.length; i++) {
                         if(str == this.drills[i].difficulty) {
-                            return `${envUri}/img/star${str}.gif`;
+                            return `${this.envUri}/img/star${str}.gif`;
                         }
                     }
                 };
