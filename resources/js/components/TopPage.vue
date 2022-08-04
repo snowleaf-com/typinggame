@@ -115,6 +115,7 @@
         },
         created() {
             this.envUri = process.env.MIX_APP_URL;
+            console.log(this.envUri);
         },
         methods: {
             ressetting: function () {
