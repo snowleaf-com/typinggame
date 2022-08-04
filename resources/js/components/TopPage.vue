@@ -43,7 +43,7 @@
                                         <p class="card-text d-flex justify-content-end">
                                             作成者: {{ list.user.name }}
                                         </p>
-                                        <a :href="`https://snow-leaf.com/typinggame/drills/show/${list.id}`" class="btn btn-primary float-right">ゲーム開始</a>
+                                        <a :href="`${envUri}/drills/show/${list.id}`" class="btn btn-primary float-right">ゲーム開始</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,6 +74,7 @@
                 load: true,
                 page: 1,
                 drills: [],
+                envUri: '',
             }
         },
         computed: {
@@ -106,7 +107,7 @@
                 return function (str) {
                     for(let i = 0; i < this.drills.length; i++) {
                         if(str == this.drills[i].difficulty) {
-                            return `/img/star${str}.gif`;
+                            return `${envUri}/img/star${str}.gif`;
                         }
                     }
                 };
@@ -129,7 +130,7 @@
                     if (!this.itemLoading) {
                         this.itemLoading = true
                         try {
-                            const response = await axios.get('api/lists?page=' + this.page);
+                            const response = await axios.get(`${envUri}/api/lists?page=${this.page}`);
                             if (response.data.drills.last_page == this.page) this.load = false;
                             if (response.data.drills.data) {
                                 await response.data.drills.data.forEach((n, i) => {
@@ -155,6 +156,8 @@
                 if (bottomOfWindow) this.getItems();
             }, 200, { trailing: true, leading: true }));
             this.getItems();
+
+            this.envUri = process.env.MIX_APP_URL;
         },
     }
 </script>

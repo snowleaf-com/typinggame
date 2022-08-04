@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="display-7 text-center pb-3">問題を編集する</h1>
             <p class="text-center text-danger">問題６〜１０以外は入力必須項目です。<br>問題は英数字・記号・半角スペースのみです。</p>
-            <form :action="'/update/' + newEvent.id" method="post">
+            <form :action="`${envUri}/update/${newEvent.id}`" method="post">
                 <slot></slot>
                 <input type="hidden" name="id" v-model="newEvent.id">
                 <div class="form-group row justify-content-center">
@@ -144,6 +144,7 @@
         props: ['categories', 'drill'],
         data() {
             return {
+                envUri: '',
                 question6from10: false,//６問目以降表示するかどうか
                 newEvent: {//それぞれの入力フォーム初期値
                     id: '',
@@ -417,6 +418,7 @@
             }
         },
         mounted() {
+            this.envUri = process.env.MIX_APP_URL;
             this.newEvent.id = this.drill[0].id;
             this.newEvent.title = this.drill[0].title;
             this.newEvent.category = this.drill[0].category_id;

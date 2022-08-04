@@ -27,7 +27,7 @@
                     <p v-else>ログインすればスコア管理ができます</p>
                     <p v-model="endTitle">{{ endTitle }}</p>
                     <p v-model="endTitle2">{{ endTitle2 }}</p>
-                    <a :href="'/drills/show/' + this.drill[0].id"><button class="btn btn-success">Click Replay</button></a>
+                    <a :href="`${envUri}/drills/show/${this.drill[0].id}`"><button class="btn btn-success">Click Replay</button></a>
                 </template>
 
             </div>
@@ -58,7 +58,8 @@
                 isCountDown: false,
                 currentWordNum: 0,
                 currentProblemNum: 0,
-                totalProblem: 0
+                totalProblem: 0,
+                envUri: '',
             }
         },
         mounted() { //トータル問題数の計算
@@ -71,7 +72,9 @@
             });
 
             this.totalProblem = filterNullProblem.length;
-            console.log(filterNullProblem.length)
+            console.log(filterNullProblem.length);
+
+            this.envUri = process.env.MIX_APP_URL;
         },
         computed: {
             problemWords: function() {
@@ -101,19 +104,19 @@
             },
             difficultyImage: function() {
                 if (this.drill[0].difficulty === 1) {
-                    return '/img/star1.gif';
+                    return `${envUri}/img/star1.gif`;
                 }
                 if (this.drill[0].difficulty === 2) {
-                    return '/img/star2.gif';
+                    return `${envUri}/img/star2.gif`;
                 }
                 if (this.drill[0].difficulty === 3) {
-                    return '/img/star3.gif';
+                    return `${envUri}/img/star3.gif`;
                 }
                 if (this.drill[0].difficulty === 4) {
-                    return '/img/star4.gif';
+                    return `${envUri}/img/star4.gif`;
                 }
                 if (this.drill[0].difficulty === 5) {
-                    return '/img/star5.gif';
+                    return `${envUri}/img/star5.gif`;
                 }
 
             }
@@ -200,7 +203,7 @@
                         high_score: this.typingScore,
                         high_score_user_id: guestId
                     }
-                    const url = `/api/drill/score/${this.drill[0].id}`;
+                    const url = `${envUri}/api/drill/score/${this.drill[0].id}`;
                     axios.post(url, data)
                         .then( res => {
                             this.endTitle = res.data;
@@ -213,7 +216,7 @@
                         high_score: this.typingScore,
                         high_score_user_id: this.userId
                     }
-                    const url = `/api/drill/score/${this.drill[0].id}`;
+                    const url = `${envUri}/api/drill/score/${this.drill[0].id}`;
                     axios.post(url, data)
                         .then( res => {
                             this.endTitle2 = res.data;
@@ -234,7 +237,7 @@
                     score: this.typingScore,
                     user_id: this.userId
                 }
-                const url = `/api/myscore/${this.drill[0].id}`;
+                const url = `${envUri}/api/myscore/${this.drill[0].id}`;
                 axios.post(url, data)
                     .then(res => {
                         this.endTitle = res.data;

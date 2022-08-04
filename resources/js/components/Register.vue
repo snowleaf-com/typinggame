@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="display-7 text-center pb-3">問題を作成する</h1>
             <p class="text-center text-danger">問題６〜１０以外は入力必須項目です。<br>問題は英数字・記号・半角スペースのみです。</p>
-            <form action="/store" method="post">
+            <form :action="`${envUri}/store`" method="post">
                 <slot></slot>
                 <div class="form-group row justify-content-center">
                     <label for="validationTitle" class="mr-lg-3 mr-md-5 col-md-1 col-sm-10 col-form-label">タイトル</label>
@@ -151,6 +151,7 @@
             props: ['categories', 'errors'],
         data() {
             return {
+                envUri: '',
                 question6from10: false,//６問目以降表示するかどうか
                 newEvent: {//それぞれの入力フォーム初期値
                     title: '',
@@ -421,6 +422,9 @@
                 e.preventDefault()
                 this.question6from10 = true
             }
+        },
+        mounted() {
+            this.envUri = process.env.MIX_APP_URL;
         }
     }
 </script>
