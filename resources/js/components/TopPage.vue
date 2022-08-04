@@ -132,7 +132,7 @@
                     if (!this.itemLoading) {
                         this.itemLoading = true
                         try {
-                            const response = await axios.get(`/api/lists?page=${this.page}`);
+                            const response = await axios.get(`${this.envUri}/api/lists?page=${this.page}`);
                             if (response.data.drills.last_page == this.page) this.load = false;
                             if (response.data.drills.data) {
                                 await response.data.drills.data.forEach((n, i) => {
