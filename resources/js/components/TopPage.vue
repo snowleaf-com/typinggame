@@ -74,7 +74,7 @@
                 load: true,
                 page: 1,
                 drills: [],
-                envUri: '',
+                envUri: 'aaa',
             }
         },
         computed: {
