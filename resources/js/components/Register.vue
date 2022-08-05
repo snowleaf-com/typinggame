@@ -423,7 +423,7 @@
                 this.question6from10 = true
             }
         },
-        mounted() {
+       created() {
             this.envUri = process.env.MIX_APP_URL;
         }
     }

@@ -417,8 +417,10 @@
                 this.question6from10 = true
             }
         },
-        mounted() {
+        created() {
             this.envUri = process.env.MIX_APP_URL;
+        },
+        mounted() {
             this.newEvent.id = this.drill[0].id;
             this.newEvent.title = this.drill[0].title;
             this.newEvent.category = this.drill[0].category_id;

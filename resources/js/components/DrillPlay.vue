@@ -74,6 +74,8 @@
             this.totalProblem = filterNullProblem.length;
             console.log(filterNullProblem.length);
 
+        },
+        created() { 
             this.envUri = process.env.MIX_APP_URL;
         },
         computed: {
@@ -104,19 +106,19 @@
             },
             difficultyImage: function() {
                 if (this.drill[0].difficulty === 1) {
-                    return `${envUri}/img/star1.gif`;
+                    return `${this.envUri}/img/star1.gif`;
                 }
                 if (this.drill[0].difficulty === 2) {
-                    return `${envUri}/img/star2.gif`;
+                    return `${this.envUri}/img/star2.gif`;
                 }
                 if (this.drill[0].difficulty === 3) {
-                    return `${envUri}/img/star3.gif`;
+                    return `${this.envUri}/img/star3.gif`;
                 }
                 if (this.drill[0].difficulty === 4) {
-                    return `${envUri}/img/star4.gif`;
+                    return `${this.envUri}/img/star4.gif`;
                 }
                 if (this.drill[0].difficulty === 5) {
-                    return `${envUri}/img/star5.gif`;
+                    return `${this.envUri}/img/star5.gif`;
                 }
 
             }
@@ -203,7 +205,7 @@
                         high_score: this.typingScore,
                         high_score_user_id: guestId
                     }
-                    const url = `${envUri}/api/drill/score/${this.drill[0].id}`;
+                    const url = `${this.envUri}/api/drill/score/${this.drill[0].id}`;
                     axios.post(url, data)
                         .then( res => {
                             this.endTitle = res.data;
@@ -216,7 +218,7 @@
                         high_score: this.typingScore,
                         high_score_user_id: this.userId
                     }
-                    const url = `${envUri}/api/drill/score/${this.drill[0].id}`;
+                    const url = `${this.envUri}/api/drill/score/${this.drill[0].id}`;
                     axios.post(url, data)
                         .then( res => {
                             this.endTitle2 = res.data;
@@ -237,7 +239,7 @@
                     score: this.typingScore,
                     user_id: this.userId
                 }
-                const url = `${envUri}/api/myscore/${this.drill[0].id}`;
+                const url = `${this.envUri}/api/myscore/${this.drill[0].id}`;
                 axios.post(url, data)
                     .then(res => {
                         this.endTitle = res.data;
