@@ -59,7 +59,7 @@
                 currentWordNum: 0,
                 currentProblemNum: 0,
                 totalProblem: 0,
-                envUri: '',
+                envUri: process.env.MIX_APP_URL,
             }
         },
         mounted() { //トータル問題数の計算
@@ -75,9 +75,9 @@
             console.log(filterNullProblem.length);
 
         },
-        created() { 
-            this.envUri = process.env.MIX_APP_URL;
-        },
+        // created() { 
+        //     this.envUri = process.env.MIX_APP_URL;
+        // },
         computed: {
             problemWords: function() {
                 if(this.isEnd === false) {

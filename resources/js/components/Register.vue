@@ -151,7 +151,7 @@
             props: ['categories', 'errors'],
         data() {
             return {
-                envUri: '',
+                envUri: process.env.MIX_APP_URL,
                 question6from10: false,//６問目以降表示するかどうか
                 newEvent: {//それぞれの入力フォーム初期値
                     title: '',
@@ -423,8 +423,8 @@
                 this.question6from10 = true
             }
         },
-       created() {
-            this.envUri = process.env.MIX_APP_URL;
-        }
+    //    created() {
+    //         this.envUri = process.env.MIX_APP_URL;
+    //     }
     }
 </script>

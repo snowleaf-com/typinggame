@@ -74,7 +74,7 @@
                 load: true,
                 page: 1,
                 drills: [],
-                envUri: '',
+                envUri: process.env.MIX_APP_URL,
             }
         },
         computed: {
@@ -113,10 +113,10 @@
                 };
             },
         },
-        created() {
-            this.envUri = process.env.MIX_APP_URL;
-            console.log(this.envUri);
-        },
+        // created() {
+        //     this.envUri = process.env.MIX_APP_URL;
+        //     console.log(this.envUri);
+        // },
         methods: {
             ressetting: function () {
                 this.selectCategoryId = null;
