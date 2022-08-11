@@ -74,7 +74,7 @@
                 load: true,
                 page: 1,
                 drills: [],
-                envUri: window.location.href.replace(/\/$/, ''),
+                envUri: process.env.MIX_APP_URL,
             }
         },
         computed: {
