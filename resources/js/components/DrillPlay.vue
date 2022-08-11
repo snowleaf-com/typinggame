@@ -59,7 +59,7 @@
                 currentWordNum: 0,
                 currentProblemNum: 0,
                 totalProblem: 0,
-                envUri: process.env.MIX_APP_URL,
+                envUri: window.location.href.replace(/\/$/, ''),
             }
         },
         mounted() { //トータル問題数の計算

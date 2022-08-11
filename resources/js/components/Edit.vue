@@ -144,7 +144,7 @@
         props: ['categories', 'drill'],
         data() {
             return {
-                envUri: process.env.MIX_APP_URL,
+                envUri: window.location.href.replace(/\/$/, ''),
                 question6from10: false,//６問目以降表示するかどうか
                 newEvent: {//それぞれの入力フォーム初期値
                     id: '',

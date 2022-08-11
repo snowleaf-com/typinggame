@@ -74,7 +74,7 @@
                 load: true,
                 page: 1,
                 drills: [],
-                envUri: process.env.MIX_APP_URL,
+                envUri: window.location.href.replace(/\/$/, ''),
             }
         },
         computed: {
@@ -153,6 +153,7 @@
             },
         },
         mounted() {
+            console.log(this.envUri);
             this.clearVar();
             window.addEventListener('scroll', _.throttle(() => {
                 let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight == document.documentElement.offsetHeight;
